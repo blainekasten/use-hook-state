@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "moduleResolution": "node",
+    "target": "ES2015",
+    "module": "esnext",
+    "lib": ["dom", "esnext"],
+    "strict": true,
+    "jsx": "react",
+    "esModuleInterop": true
+  },
+  "include": ["src"]
+}

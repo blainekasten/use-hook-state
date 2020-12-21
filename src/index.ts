@@ -3,7 +3,8 @@ import { useEffect, useState } from 'react'
 type Hook<State> = () => State
 type Responders<State> = Array<(newState: State) => void>
 
-export function createState<State>(initialValue: State, useHook: Hook<State>) {
+export function createState<State>(defaultValue: State, useHook: Hook<State>) {
+  let initialValue = defaultValue
   let unmounted = false
   let responders: Responders<State> = []
 
@@ -31,6 +32,8 @@ export function createState<State>(initialValue: State, useHook: Hook<State>) {
     },
     Provider(): null {
       unmounted = false
+      let value = useHook()
+      initialValue = value
 
       useEffect(() => {
         return () => {
@@ -38,7 +41,6 @@ export function createState<State>(initialValue: State, useHook: Hook<State>) {
         }
       }, [])
 
-      let value = useHook()
       responders.forEach((r) => r(value))
 
       return null
