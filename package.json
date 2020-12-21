@@ -1,6 +1,6 @@
 {
   "name": "use-hook-state",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "license": "MIT",
   "author": "Blaine Kasten",
   "main": "./lib/index.js",
@@ -11,8 +11,8 @@
     "es"
   ],
   "scripts": {
-    "build:commonjs": "tsc src/* --module CommonJS --outDir lib",
-    "build:es": "tsc src/* --outDir es",
+    "build:commonjs": "tsc src/* --module CommonJS --outDir lib --declaration",
+    "build:es": "tsc src/* --outDir es --declaration",
     "build": "npm run build:commonjs && npm run build:es",
     "clean": "rimraf lib dist es coverage",
     "format": "prettier --write \"{src,test}/**/*.{js,ts}\" \"docs/**/*.md\"",
